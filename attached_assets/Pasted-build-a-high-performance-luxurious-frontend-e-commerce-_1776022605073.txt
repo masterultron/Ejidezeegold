@@ -1,0 +1,64 @@
+build a high-performance, luxurious frontend e-commerce interface for a UAE-based jewelry brand named "Ejidezee Gold". Please act as a Senior Frontend Developer and architect this project using Next.js (App Router), TypeScript, and Tailwind CSS. Do not use generic boilerplate; follow these strict design and technical specifications.
+
+1. Design System & Aesthetics
+
+Theme: "Dark Luxury". The application must strictly use a background of Midnight Black (#0a0a0a) and accents/typography in Champagne Gold (#D4AF37). Avoid pure white; use high-contrast white with slight opacity (e.g., text-white/80 or border-white/10) for secondary elements.
+
+Typography: Use a sophisticated Serif font (like Playfair Display) for headings and a clean Sans-serif (like Inter) for body text and small UI elements.
+
+Image & Logo Handling: Crucial Note: I am currently awaiting the official brand logo and product photography. For now, use a text-based elegant placeholder for the logo. For all product imagery, use high-quality, dark-themed, moody jewelry mock images from Unsplash. All product images must be forced into a 4:5 vertical portrait aspect ratio (aspect-[4/5]) using object-cover to accommodate long items.
+
+2. Technology Stack & Packages
+
+Framework: Next.js (App Router).
+
+Language: TypeScript (ensure strict typing for the Product and Cart interfaces).
+
+Styling: Tailwind CSS.
+
+Animations: framer-motion (for page transitions, hover scales, and the slide-out cart).
+
+Carousels: embla-carousel-react (for any product sliders).
+
+Icons: lucide-react.
+
+3. Directory Architecture & Data
+Please structure the app precisely as follows:
+
+src/app/: Contains layout and core pages (Home, Collection, Contact).
+
+src/components/: Reusable UI (Navbar, CartDrawer, InquiryModal, ProductCard).
+
+src/context/: Contains CartContext.tsx to manage global state.
+
+src/data/: Contains products.ts. Create robust mock data for at least 6 items (e.g., "Gold Halo Ring", "Aura Diamond Necklace", "Diamond Tennis Bracelet") to serve as placeholders until the real inventory is provided. The product interface must include an id, name, description, category, image (Unsplash URL), and basePrice (in AED).
+
+4. Global State & Multi-Currency
+
+Implement CartContext.tsx to handle adding/removing items, incrementing quantities (no duplicate rows), and calculating the subtotal.
+
+Implement a Currency Switcher in the state that toggles between USD ($), AED (د.إ), and NGN (₦). Use fixed dummy exchange rates (e.g., 1 AED = 0.27 USD, 1 AED = 420 NGN) to dynamically re-calculate and format all prices rendered in the product grid and cart.
+
+5. Core Components & Page Flows
+
+Global Navbar: A sticky header with a glassmorphism effect (backdrop-blur-md bg-[#0a0a0a]/80). It must contain a Hamburger/Collections menu, the centralized "EJIDEZEE GOLD" mock logo, the Currency Switcher dropdown, and a Cart Icon with a dynamic notification badge showing the total item count.
+
+Home Page (Marketing Funnel): Create a Hero section with a dark jewelry background mock image and the caption "Timeless Elegance, Crafted in Gold." Below this, add a brief brand paragraph, followed by a "Featured Products" section displaying 3-4 items, and a "View All Collections" button.
+
+Product Collection Page: Display a horizontal, scrollable category filter (Necklaces, Rings, Earrings, Bracelets, Sets). Below it, render the 4:5 product cards in a responsive grid. Cards should have a slight group-hover:scale-105 Framer Motion effect and display the dynamic, currency-adjusted price in gold text.
+
+6. Checkout Architecture (The Cart Drawer & Modal)
+
+Cart Drawer: Build a Framer Motion slide-out drawer originating from the right (max-w-md). Blur the background. List cart items with thumbnail, name, price, and +/- quantity toggles.
+
+Dual Checkout Buttons: At the bottom of the cart, display the subtotal and two buttons: "Secure Checkout (via Stripe)" (Standard solid gold button) and "Proceed to Inquiry" (Secondary gold-outline button).
+
+The 3-Step "Royal Inquiry" Modal: When "Proceed to Inquiry" is clicked, trigger a centered modal over the UI.
+
+Step 1: Collect Full Name and Phone/WhatsApp number.
+
+Step 2: A text area for custom requests (e.g., ring sizes).
+
+Step 3: Action tiles reading "Send to WhatsApp" and "Send via Email". (For now, just make these buttons console.log the cart payload and user details). Use a thin gold progress bar at the top of the modal to track steps.
+
+Please begin by setting up the project, installing the dependencies, configuring Tailwind, and generating the dummy data and Context. Once that foundation is solid, build out the UI components.
