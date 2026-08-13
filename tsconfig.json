@@ -1,8 +1,11 @@
 {
   "files": [],
   "references": [
-    {
-      "path": "./artifacts/ejidezeegold"
-    }
+    { "path": "./artifacts/ejidezeegold" },
+    { "path": "./artifacts/api-server" },
+    { "path": "./artifacts/mockup-sandbox" },
+    { "path": "./scripts" },
+    { "path": "./lib/api-zod" },
+    { "path": "./lib/db" }
   ]
 }
