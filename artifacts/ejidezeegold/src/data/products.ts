@@ -46,10 +46,10 @@ export const products: Product[] = [
   { id: "n14", name: "Textured Ankh Cross Pendant", weightInGrams: 4.1, description: "Standalone textured cross pendant with a polished center orb.", category: "Necklaces", subcategory: "Pendants", image: "/images/Necklace/14.jpeg" },
   { id: "n15", name: "Rose Medallion Rosary Necklace", weightInGrams: 10.1, description: "Beaded rosary-style chain with a cross and rose-textured religious medallion.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/15.jpeg" },
   { id: "n16", name: "Clover Station Necklace (Sparse)", weightInGrams: 8.8, description: "Fine chain necklace with widely spaced engraved clover stations.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/16.jpeg" },
-{ id: "n19", name: "Clover Station Necklace (Dense)", weightInGrams: 12.1, description: "Substantial chain necklace with closely spaced clover stations.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/19.jpeg" },
-{ id: "n20", name: "Clover Station Necklace (Wide Spacing)", weightInGrams: 7.1, description: "Fine chain necklace with five evenly spaced clover stations.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/20.jpeg" },
-{ id: "n21", name: "Clover Station Necklace (Compact)", weightInGrams: 6.6, description: "Fine chain necklace with six engraved clover stations.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/21.jpeg" },
-{ id: "n22", name: "Clover Station Necklace (Full)", weightInGrams: 9.2, description: "Chain necklace with six engraved clover stations, fuller weight.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/22.jpeg" },
+  { id: "n19", name: "Clover Station Necklace (Dense)", weightInGrams: 12.1, description: "Substantial chain necklace with closely spaced clover stations.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/19.jpeg" },
+  { id: "n20", name: "Clover Station Necklace (Wide Spacing)", weightInGrams: 7.1, description: "Fine chain necklace with five evenly spaced clover stations.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/20.jpeg" },
+  { id: "n21", name: "Clover Station Necklace (Compact)", weightInGrams: 6.6, description: "Fine chain necklace with six engraved clover stations.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/21.jpeg" },
+  { id: "n22", name: "Clover Station Necklace (Full)", weightInGrams: 9.2, description: "Chain necklace with six engraved clover stations, fuller weight.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/22.jpeg" },
   { id: "n23", name: "Triple Heart Charm Necklace", weightInGrams: 2.1, description: "Fine chain necklace with three connected textured heart charms.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/23.jpeg" },
   { id: "n24", name: "Christmas Tree Pendant Necklace", weightInGrams: 2.7, description: "Fine curb chain with an engraved Christmas tree pendant.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/24.jpeg" },
   { id: "n25", name: "Sculpted Ribbon Heart Necklace", weightInGrams: 3.9, description: "Fine chain necklace with a brushed sculptural open-heart pendant.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/25.jpeg" },
@@ -68,6 +68,53 @@ export const products: Product[] = [
   //   e56 — Ornate S-Scroll Pendant, 20.0g, beaded texture
   //   e59 — Textured Clover Charm Pendant, 2.6g
   //   e63 — Crowned "KING" Charm Pendant, ~1g each (sold individually / pair — confirm)
+
+  // ─── RINGS ──────────────────────────────────────────────────────
+  // NOTE: Rings has no CATEGORY_TREE dropdown, so subcategory is omitted throughout.
+
+  { id: "r1", name: "Beaded Ball Stack Ring", weightInGrams: 1.7, description: "Open adjustable band with three graduated textured gold beads.", category: "Rings", image: "/images/Rings/1.jpeg" },
+  { id: "r2", name: "Watch-Link Chain Ring", weightInGrams: 1.4, description: "Interlocking rectangular watch-link style band.", category: "Rings", image: "/images/Rings/2.jpeg" },
+  // r3 (bulk pile of plain polished bands, file 3.jpeg) omitted — weight given as a 1.5-1.7g range across
+  // ~20 pieces, not per-unit. Needs individual weigh-in or a single flat "assorted bands" listing.
+  { id: "r4", name: "Triple Heart Stack Ring", weightInGrams: 1.37, description: "Open adjustable band set with three textured heart motifs.", category: "Rings", image: "/images/Rings/4.jpeg" },
+  { id: "r5", name: "Cutout Geometric Signet Ring", weightInGrams: 3.5, description: "Polished open-cutout rectangular signet.", category: "Rings", image: "/images/Rings/5.jpeg" },
+  { id: "r6", name: "Bar Accent Signet Ring", weightInGrams: 3.0, description: "Rectangular signet with a raised bar/dumbbell motif.", category: "Rings", image: "/images/Rings/6.jpeg" },
+  { id: "r7", name: "Striped Onyx-Top Signet Ring", weightInGrams: 4.7, description: "Round signet with a black-striped inlay top.", category: "Rings", image: "/images/Rings/7.jpeg" },
+  { id: "r8", name: "Greek Key Enamel Signet Ring", weightInGrams: 6.0, description: "Rectangular signet with a black enamel Greek key motif.", category: "Rings", image: "/images/Rings/8.jpeg" },
+  // (huggie-style hinged hoop, file 9.jpeg, 1.4g) omitted — appears misfiled from Earrings batch (matches e76-e88 huggie style), not a ring.
+  { id: "r9", name: "Square CZ Statement Ring & Eternity Band Set", weightInGrams: 18.0, description: "Large square-cut CZ statement ring paired with a matching pavé eternity band, sold as a 2-piece set.", category: "Rings", image: "/images/Rings/10.jpeg" },
+  { id: "r10", name: "Square CZ Ring & Textured Band Set", weightInGrams: 12.8, description: "Large square-cut CZ ring paired with a diamond-cut textured wide band, sold as a 2-piece set.", category: "Rings", image: "/images/Rings/11.jpeg" },
+  { id: "r11", name: "Emerald-Cut Halo Ring & Double Band Set", weightInGrams: 18.5, description: "Emerald-cut halo statement ring paired with two matching pavé eternity bands, sold as a 3-piece set.", category: "Rings", image: "/images/Rings/13.jpeg" },
+  { id: "r12", name: "Square CZ Ring & Wide Textured Band Set", weightInGrams: 14.2, description: "Square-cut CZ ring paired with a wide diamond-cut textured band, sold as a 2-piece set.", category: "Rings", image: "/images/Rings/14.jpeg" },
+  // (7-ring sculptural cocktail collection, file 15.jpeg; 9-ring white-gold CZ collection, file 16.jpeg;
+  // ~15-ring engagement-style CZ collection, file 17.jpeg) omitted — display/lifestyle shots with no
+  // individual weights. Needs per-design weigh-in before these can become SKUs.
+  { id: "r13", name: "Beaded Cluster Ring (White-Tone)", weightInGrams: 8.2, description: "Wide open cuff-style ring with dense beaded, textured rows in a rhodium finish.", category: "Rings", image: "/images/Rings/18.jpeg" },
+  { id: "r14", name: "Beaded Cluster Ring (Gold-Tone)", weightInGrams: 8.2, description: "Wide open cuff-style ring with dense beaded, textured rows in a gold finish.", category: "Rings", image: "/images/Rings/19.jpeg" },
+  { id: "r15", name: "Beaded Cluster Ring (Compact, Gold-Tone)", weightInGrams: 6.7, description: "Smaller open cuff-style ring with dense beaded, textured rows in a gold finish.", category: "Rings", image: "/images/Rings/20.jpeg" },
+  { id: "r16", name: "Beaded Cluster Ring (White-Tone, Full)", weightInGrams: 7.3, description: "Wide open cuff-style ring with dense beaded, textured rows in a rhodium finish.", category: "Rings", image: "/images/Rings/21.jpeg" },
+  { id: "r17", name: "Rope-Textured Enamel Ring", weightInGrams: 5.6, description: "Gold rope-textured link ring with purple enamel accent bars; matching bracelet sold separately (see b41).", category: "Rings", image: "/images/Rings/22.jpeg" },
+  { id: "r18", name: "Beaded Cluster Ring (White-Tone, Petite)", weightInGrams: 3.0, description: "Small open cuff-style ring with dense beaded, textured rows in a rhodium finish.", category: "Rings", image: "/images/Rings/23.jpeg" },
+  { id: "r19", name: "Honeycomb Lattice Beaded Ring", weightInGrams: 10.6, description: "Wide woven honeycomb-lattice band with beaded accents.", category: "Rings", image: "/images/Rings/24.jpeg" },
+  { id: "r20", name: "Pavé Pinwheel Wrap Ring (Gold)", weightInGrams: 3.4, description: "Open wrap-style ring with dual pavé star/pinwheel motifs.", category: "Rings", image: "/images/Rings/25.jpeg" },
+  { id: "r21", name: "Pavé Pinwheel Wrap Ring (Petite Gold)", weightInGrams: 1.8, description: "Smaller open wrap-style ring with pavé star/pinwheel motifs.", category: "Rings", image: "/images/Rings/26.jpeg" },
+  { id: "r22", name: "Pavé Pinwheel Wrap Ring (White-Tone)", weightInGrams: 3.4, description: "White-gold open wrap-style ring with dual pavé star/pinwheel motifs.", category: "Rings", image: "/images/Rings/27.jpeg" },
+  { id: "r23", name: "Beaded Cluster Ring (White-Tone, Mid)", weightInGrams: 5.2, description: "Open cuff-style ring with dense beaded, textured rows in a rhodium finish.", category: "Rings", image: "/images/Rings/28.jpeg" },
+  { id: "r24", name: "Two-Tone Pavé Bar Ring", weightInGrams: 2.6, description: "Rectangular openwork bar ring with pavé accents in a two-tone gold and white finish.", category: "Rings", image: "/images/Rings/29.jpeg" },
+  { id: "r25", name: "Ball & Bar Cage Ring", weightInGrams: 2.7, description: "Open rectangular cage ring finished with polished ball terminals.", category: "Rings", image: "/images/Rings/30.jpeg" },
+  { id: "r26", name: "Sculptural Wave Cutout Ring", weightInGrams: 1.7, description: "Openwork ring with a swirled wave-texture silhouette.", category: "Rings", image: "/images/Rings/31.jpeg" },
+  { id: "r27", name: "Pavé Pinwheel Wrap Ring (Enamel Stripe)", weightInGrams: 3.6, description: "Open wrap-style ring with pavé star motifs and a black enamel stripe accent.", category: "Rings", image: "/images/Rings/32.jpeg" },
+  { id: "r28", name: "Woven Wave Lattice Ring", weightInGrams: 2.4, description: "Openwork ring with a woven wave-pattern lattice.", category: "Rings", image: "/images/Rings/33.jpeg" },
+  { id: "r29", name: "Filigree Flower Ring", weightInGrams: 2.0, description: "Openwork filigree ring centered on a flower motif.", category: "Rings", image: "/images/Rings/34.jpeg" },
+  { id: "r30", name: "Petal Lattice Ring", weightInGrams: 1.8, description: "Openwork ring with a fan-and-petal lattice pattern.", category: "Rings", image: "/images/Rings/35.jpeg" },
+  { id: "r31", name: "Chevron Leaf Multi-Band Ring", weightInGrams: 2.4, description: "Openwork multi-band ring with a chevron leaf motif.", category: "Rings", image: "/images/Rings/36.jpeg" },
+  { id: "r32", name: "Nugget Cluster Ring", weightInGrams: 2.0, description: "Textured leaf and teardrop nugget cluster ring.", category: "Rings", image: "/images/Rings/37.jpeg" },
+  { id: "r33", name: "Honeycomb Circle Cluster Ring", weightInGrams: 2.1, description: "Domed honeycomb-circle cluster ring.", category: "Rings", image: "/images/Rings/38.jpeg" },
+  { id: "r34", name: "Butterfly Filigree Ring", weightInGrams: 1.8, description: "Openwork filigree ring in a butterfly and flower silhouette.", category: "Rings", image: "/images/Rings/39.jpeg" },
+  { id: "r35", name: "Honeycomb Oval Cluster Ring (Tall)", weightInGrams: 2.6, description: "Taller domed honeycomb-oval cluster ring.", category: "Rings", image: "/images/Rings/40.jpeg" },
+  { id: "r36", name: "Marquise Cluster Flower Ring", weightInGrams: 1.9, description: "Openwork marquise-petal flower cluster ring.", category: "Rings", image: "/images/Rings/41.jpeg" },
+  { id: "r37", name: "Double Heart Wrap Ring", weightInGrams: 1.7, description: "Open wrap-style ring with two textured heart-knot motifs.", category: "Rings", image: "/images/Rings/42.jpeg" },
+  { id: "r38", name: "Heart Petal Flower Ring", weightInGrams: 1.6, description: "Domed flower ring with heart-shaped petals.", category: "Rings", image: "/images/Rings/43.jpeg" },
 
   // ─── BRACELETS / BANGLES / ANKLETS ──────────────────────────────
   { id: "b1", name: "Rope Twist Chain Bracelet", weightInGrams: 3.95, description: "Delicate twisted rope-link chain with a lobster clasp and heart-tag charm.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/1.jpeg" },
@@ -110,6 +157,7 @@ export const products: Product[] = [
   { id: "b38", name: "Triple-Strand Silver Bead Bracelet", weightInGrams: 15.2, description: "Three-row brushed silver-tone bead bracelet.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/38.jpeg" },
   { id: "b39", name: "Rope Chain Bracelet (8\")", weightInGrams: 7.3, description: "Classic twisted rope-link bracelet, 8\" length.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/39.jpeg" },
   { id: "b40", name: "Rope Chain Bracelet (7.5\")", weightInGrams: 7.1, description: "Classic twisted rope-link bracelet, 7.5\" length.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/40.jpeg" },
+  { id: "b41", name: "Rope-Textured Enamel Bracelet", weightInGrams: 14.9, description: "Gold rope-textured link bracelet with purple enamel accent bars; matching ring sold separately (see r17).", category: "Bracelets", subcategory: "Bracelets", image: "/images/Rings/22.jpeg" },
 
   // ─── EARRINGS / STUDS ────────────────────────────────────────────
   { id: "e1", name: "Woven Textured Hoop Earrings", weightInGrams: 19.48, description: "Bold woven-texture hoop earrings with a ridged inner border", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e1.jpeg" },
