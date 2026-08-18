@@ -15,10 +15,10 @@ export default function Home() {
       <section className="relative h-[100dvh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80&w=2000"
-            alt="Gold jewelry background"
-            className="w-full h-full object-cover opacity-30"
-          />
+  src="https://images.unsplash.com/photo-1777286492764-456e3530e34c?auto=format&fit=crop&q=80&w=2000"
+  alt="Gold jewelry background"
+  className="w-full h-full object-cover opacity-30"
+/>
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent" />
         </div>
 
