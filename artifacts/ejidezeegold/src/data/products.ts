@@ -1,24 +1,202 @@
-// ─── PRICING CONFIG ───────────────────────────────────────────────
-// 1g of gold in NGN. Change this one number to update all prices.
-const GOLD_PRICE_PER_GRAM_NGN = 180000;
-const NGN_TO_AED = 365.5;
+// NOTE: Pricing logic (gramsToAED, gold price per gram) lives in
+// src/context/CartContext.tsx now — that's the single source of truth.
+// This file only defines the product interface and catalog data.
 
-// Converts weight to AED base price automatically
-export const gramsToAED = (grams: number): number =>
-  (grams * GOLD_PRICE_PER_GRAM_NGN) / NGN_TO_AED;
+export type Category = "Necklaces" | "Rings" | "Earrings" | "Bracelets" | "Sets" | "Watches";
+
+export type Subcategory =
+  | "Necklaces" | "Necklace and Pendants" | "Pendants"  // under Necklaces
+  | "Earrings" | "Studs"                                 // under Earrings
+  | "Bracelets" | "Bangles" | "Anklets";                  // under Bracelets
+
+// Which top-level categories have a dropdown, and what their sub-options are.
+// Categories not listed here (Rings, Sets, Watches) have no dropdown.
+export const CATEGORY_TREE: Partial<Record<Category, Subcategory[]>> = {
+  Necklaces: ["Necklaces", "Necklace and Pendants", "Pendants"],
+  Earrings: ["Earrings", "Studs"],
+  Bracelets: ["Bracelets", "Bangles", "Anklets"],
+};
 
 export interface Product {
   id: string;
   name: string;
   description: string;
-  category: "Necklaces" | "Rings" | "Earrings & Pendants" | "Bracelets" | "Sets";
+  category: Category;
+  subcategory?: Subcategory;
   image: string;
-  weightInGrams: number;
+  weightInGrams?: number;    // optional — omit for priceOnRequest items with no confirmed weight yet
+  priceOnRequest?: boolean;  // true = show "Inquire" button instead of a price
 }
 
-// TODO: Add Ejidezee Gold International's real product catalog here.
-// Same shape as before — id, name, description, category, image path, weightInGrams.
-// Example:
-// { id: "p1", name: "The Golden Bloom Dome", weightInGrams: 7.10, description: "...", category: "Rings", image: "/images/Rings/1.JPG" },
+export const products: Product[] = [
+  // ─── NECKLACES ──────────────────────────────────────────────────
+  { id: "n1", name: "Bismarck Link Chain", weightInGrams: 4.60, description: "Fine woven Bismarck-style chain in polished 18k gold. Available in 18\"-24\"; shown at 20\".", category: "Necklaces", subcategory: "Necklaces", image: "/images/Necklace/1.jpeg" },
+  { id: "n2", name: "Gucci Link Chain", weightInGrams: 10.20, description: "Bold interlocking oval Gucci-link chain with a substantial polished finish. Available in 18\"-24\"; shown at 20\".", category: "Necklaces", subcategory: "Necklaces", image: "/images/Necklace/2.jpeg" },
+  { id: "n3", name: "Flat Mesh Herringbone Chain", weightInGrams: 8.90, description: "Sleek flat herringbone chain with a smooth, reflective weave. Available in 18\"-24\"; shown at 20\".", category: "Necklaces", subcategory: "Necklaces", image: "/images/Necklace/3.jpeg" },
+  { id: "n4", name: "Franco Link Chain", weightInGrams: 8.20, description: "Classic braided Franco-link chain in high-polish 18k gold. Available in 18\"-24\"; shown at 20\".", category: "Necklaces", subcategory: "Necklaces", image: "/images/Necklace/4.jpeg" },
+  { id: "n5", name: "Slim Rope Chain", weightInGrams: 0.57, description: "Delicate 20\" rope chain, light enough for everyday layering.", category: "Necklaces", subcategory: "Necklaces", image: "/images/Necklace/5.jpeg" },
+  { id: "n6", name: "Flat Foxtail Chain", weightInGrams: 2.80, description: "20\" flat foxtail-weave chain with a smooth, ribbon-like finish.", category: "Necklaces", subcategory: "Necklaces", image: "/images/Necklace/6.jpeg" },
+  { id: "n7", name: "Divine Calligraphy Pendant Necklace", weightInGrams: 1.90, description: "Fine curb chain paired with an elegant Arabic calligraphy pendant.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/7.jpeg" },
+  { id: "n8", name: "Petite Puffed Heart Necklace", weightInGrams: 2.20, description: "Dainty cable chain featuring a single polished puffed heart charm.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/8.jpeg" },
+  { id: "n9", name: "Nefertiti Pendant Necklace", weightInGrams: 1.80, description: "Fine cable chain with a detailed Queen Nefertiti profile pendant.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/9.jpeg" },
+  { id: "n10", name: "V Monogram Pendant Necklace", weightInGrams: 2.0, description: "Fine chain necklace featuring an open \"V\" monogram pendant.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/10.jpeg" },
+  { id: "n11", name: "Sacred Heart Rosary Necklace", weightInGrams: 8.7, description: "Beaded rosary-style chain with a cross and Sacred Heart medallion.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/11.jpeg" },
+  { id: "n12", name: "Heart Medallion Rosary Necklace", weightInGrams: 10.2, description: "Beaded rosary-style chain with a cross and heart-shaped religious medallion.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/12.jpeg" },
+  { id: "n13", name: "Filigree Medallion Rosary Necklace", weightInGrams: 11.2, description: "Beaded rosary-style chain with a cross and open filigree religious medallion.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/13.jpeg" },
+  { id: "n14", name: "Textured Ankh Cross Pendant", weightInGrams: 4.1, description: "Standalone textured cross pendant with a polished center orb.", category: "Necklaces", subcategory: "Pendants", image: "/images/Necklace/14.jpeg" },
+  { id: "n15", name: "Rose Medallion Rosary Necklace", weightInGrams: 10.1, description: "Beaded rosary-style chain with a cross and rose-textured religious medallion.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/15.jpeg" },
+  { id: "n16", name: "Clover Station Necklace (Sparse)", weightInGrams: 8.8, description: "Fine chain necklace with widely spaced engraved clover stations.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/16.jpeg" },
+{ id: "n19", name: "Clover Station Necklace (Dense)", weightInGrams: 12.1, description: "Substantial chain necklace with closely spaced clover stations.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/19.jpeg" },
+{ id: "n20", name: "Clover Station Necklace (Wide Spacing)", weightInGrams: 7.1, description: "Fine chain necklace with five evenly spaced clover stations.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/20.jpeg" },
+{ id: "n21", name: "Clover Station Necklace (Compact)", weightInGrams: 6.6, description: "Fine chain necklace with six engraved clover stations.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/21.jpeg" },
+{ id: "n22", name: "Clover Station Necklace (Full)", weightInGrams: 9.2, description: "Chain necklace with six engraved clover stations, fuller weight.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/22.jpeg" },
+  { id: "n23", name: "Triple Heart Charm Necklace", weightInGrams: 2.1, description: "Fine chain necklace with three connected textured heart charms.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/23.jpeg" },
+  { id: "n24", name: "Christmas Tree Pendant Necklace", weightInGrams: 2.7, description: "Fine curb chain with an engraved Christmas tree pendant.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/24.jpeg" },
+  { id: "n25", name: "Sculpted Ribbon Heart Necklace", weightInGrams: 3.9, description: "Fine chain necklace with a brushed sculptural open-heart pendant.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/25.jpeg" },
+  { id: "n26", name: "Rope Chain Necklace (22\")", weightInGrams: 19.7, description: "Classic twisted rope-link necklace, 22\" length.", category: "Necklaces", subcategory: "Necklaces", image: "/images/Necklace/26.jpeg" },
+  { id: "n27", name: "Rope Chain Necklace (24\")", weightInGrams: 21.6, description: "Classic twisted rope-link necklace, 24\" length.", category: "Necklaces", subcategory: "Necklaces", image: "/images/Necklace/27.jpeg" },
+  { id: "n28", name: "Rope Chain Necklace (20\")", weightInGrams: 17.6, description: "Classic twisted rope-link necklace, 20\" length.", category: "Necklaces", subcategory: "Necklaces", image: "/images/Necklace/28.jpeg" },
+  { id: "n29", name: "Infinity Pendant Necklace (Curb Chain)", weightInGrams: 11.3, description: "Infinity symbol pendant with a diamond-cut texture on a curb chain.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/29.jpeg" },
+  { id: "n30", name: "Star-Textured Infinity Necklace", weightInGrams: 8.6, description: "Infinity symbol pendant with a fine star-etched texture.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/30.jpeg" },
+  { id: "n31", name: "Floral-Textured Infinity Necklace", weightInGrams: 9.6, description: "Infinity symbol pendant with a floral engraved texture on a double chain.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/31.jpeg" },
+  { id: "n32", name: "Slim Infinity Pendant Necklace", weightInGrams: 7.1, description: "Infinity symbol pendant with a star-etched texture on a fine chain.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/32.jpeg" },
+  { id: "n33", name: "Saint Jude Statue Pendant (Tri-Tone)", weightInGrams: 69.0, description: "Statement statue pendant of Saint Jude in tri-tone gold with silver-tone accents.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/33.jpeg" },
+  { id: "n34", name: "Saint Jude Statue Pendant (Emerald-Set)", weightInGrams: 180.0, description: "Statement statue pendant of Saint Jude with emerald-tone crystal-paved detailing.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/34.jpeg" },
 
-export const products: Product[] = [];
+  // NOTE: pendant-only items pulled from the earrings photo batch (no post/hook — bail only).
+  // Route into Necklaces/Pendants once you confirm the reclassification:
+  //   e56 — Ornate S-Scroll Pendant, 20.0g, beaded texture
+  //   e59 — Textured Clover Charm Pendant, 2.6g
+  //   e63 — Crowned "KING" Charm Pendant, ~1g each (sold individually / pair — confirm)
+
+  // ─── BRACELETS / BANGLES / ANKLETS ──────────────────────────────
+  { id: "b1", name: "Rope Twist Chain Bracelet", weightInGrams: 3.95, description: "Delicate twisted rope-link chain with a lobster clasp and heart-tag charm.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/1.jpeg" },
+  { id: "b2", name: "Petite Clover Station Bracelet", weightInGrams: 4.95, description: "Fine chain set with dainty engraved clover stations.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/2.jpeg" },
+  { id: "b3", name: "Grand Clover Station Bracelet", weightInGrams: 6.85, description: "A fuller version of the clover-station design with larger, more textured motifs.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/3.jpeg" },
+  { id: "b4", name: "Beaded Ball Cuff Bangle", weightInGrams: 5.8, description: "Open cuff bangle finished with two textured beaded-ball ends.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/4.jpeg" },
+  { id: "b5", name: "Ridged Link Clasp Bangle", weightInGrams: 3.3, description: "Slim textured bangle centered on a decorative ridged rectangular clasp.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/5.jpeg" },
+  { id: "b6", name: "Slim Dual Bead Cuff Bangle", weightInGrams: 4.4, description: "Minimalist thin open cuff with two small polished bead ends.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/6.jpeg" },
+  { id: "b7", name: "Wrap Coil Serpent Bangle", weightInGrams: 10.5, description: "Bold spiral wrap bangle with a sleek tapered point, serpent-inspired.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/7.jpeg" },
+  { id: "b8", name: "Diamond Charm Textured Bangle", weightInGrams: 3.2, description: "Slim textured bangle centered on a faceted diamond-shaped charm.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/8.jpeg" },
+  { id: "b9", name: "Woven Mesh Hinged Bangle", weightInGrams: 6.5, description: "Closed bangle with an intricate woven mesh lattice pattern.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/9.jpeg" },
+  { id: "b10", name: "Clover Heart Charm Bangle", weightInGrams: 3.9, description: "Slim closed bangle centered on a heart-petaled clover charm.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/10.jpeg" },
+  { id: "b11", name: "Textured Orb Charm Bangle", weightInGrams: 3.0, description: "Slim closed bangle with a round textured orb centerpiece.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/11.jpeg" },
+  { id: "b12", name: "Two-Tone Striped Bangle", weightInGrams: 5.3, description: "Closed bangle featuring alternating yellow and white gold stripes.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/12.jpeg" },
+  { id: "b13", name: "Dual Butterfly Cuff Bangle", weightInGrams: 6.4, description: "Open cuff bangle finished with two delicate butterfly ends.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/13.jpeg" },
+  { id: "b14", name: "Paperclip Link Bracelet", weightInGrams: 6.2, description: "Bold elongated paperclip-link chain bracelet with bead accents.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/14.jpeg" },
+  { id: "b15", name: "Textured Hallmark Bangle", weightInGrams: 2.4, description: "Closed textured bangle finished with a polished rectangular clasp.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/15.jpeg" },
+  { id: "b16", name: "Dual Clover Cuff Bangle", weightInGrams: 4.8, description: "Open cuff bangle finished with two petite clover ends.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/16.jpeg" },
+  { id: "b17", name: "Dual Flower Cuff Bangle", weightInGrams: 6.9, description: "Open cuff bangle finished with two engraved flower ends.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/17.jpeg" },
+  { id: "b18", name: "Grand Beaded Ball Cuff Bangle", weightInGrams: 7.2, description: "A fuller open cuff bangle with two larger textured beaded-ball ends.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/18.jpeg" },
+  { id: "b19", name: "Nail Cuff Bangle", weightInGrams: 9.2, description: "Sculptural open bangle in a sleek nail-inspired silhouette.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/19.jpeg" },
+  { id: "b20", name: "Beaded Ball Cuff Bangle Pair", weightInGrams: 7.3, description: "Matching pair of open cuff bangles with textured beaded-ball ends.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/20.jpeg" },
+  { id: "b21", name: "Beaded Slide Bangle", weightInGrams: 4.3, description: "Slim adjustable bangle with a row of textured beaded accents.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/21.jpeg" },
+  { id: "b22", name: "Petite Clover Chain Bracelet", weightInGrams: 5.3, description: "Fine chain bracelet with engraved clover stations.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/22.jpeg" },
+  { id: "b23", name: "Wrap-Style Bangle", weightInGrams: 11.3, description: "Sleek wrap-style bangle with a smooth, tapered open silhouette.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/23.jpeg" },
+  { id: "b24", name: "Wide Wave Mesh Cuff", description: "A dramatic wide cuff with a fluid, ribboned wave-mesh texture. Message us to confirm weight and pricing.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/24.jpeg", priceOnRequest: true },
+  { id: "b25", name: "Two-Tone Wave Mesh Cuff", description: "A dramatic wide cuff in alternating gold and white gold wave-mesh strands. Message us to confirm weight and pricing.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/25.jpeg", priceOnRequest: true },
+  { id: "b26", name: "Triple Clover Chain Bracelet", weightInGrams: 3.9, description: "Delicate chain bracelet with three engraved clover stations.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/26.jpeg" },
+  { id: "b27", name: "Slim Triple Clover Bracelet", weightInGrams: 3.1, description: "Lightweight chain bracelet with three petite clover charms.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/27.jpeg" },
+  { id: "b28", name: "Grand Clover Chain Bracelet", weightInGrams: 6.3, description: "Substantial chain bracelet with four textured clover stations.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/28.jpeg" },
+  { id: "b29", name: "Scattered Clover Chain Bracelet", weightInGrams: 4.6, description: "Chain bracelet with five delicate clover stations spaced along the length.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/29.jpeg" },
+  { id: "b30", name: "Wrap Bangle Collection", description: "A selection of wrap-style bangles in gold and white gold finishes. Message us to confirm weight and pricing.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/30.jpeg", priceOnRequest: true },
+  { id: "b31", name: "Heart Charm Mesh Anklet", weightInGrams: 4.0, description: "Mesh-link anklet centered on a crystal-set open heart.", category: "Bracelets", subcategory: "Anklets", image: "/images/Bracelets/31.jpeg" },
+  { id: "b32", name: "Infinity Mesh Anklet", weightInGrams: 4.3, description: "Mesh-link anklet featuring a polished infinity symbol charm.", category: "Bracelets", subcategory: "Anklets", image: "/images/Bracelets/32.jpeg" },
+  // b33 reclassified — see n10 above (V Monogram Pendant Necklace)
+  { id: "b34", name: "Crystal Infinity Mesh Anklet", weightInGrams: 4.3, description: "Mesh-link anklet with a crystal-paved infinity symbol charm.", category: "Bracelets", subcategory: "Anklets", image: "/images/Bracelets/34.jpeg" },
+  { id: "b35", name: "Crystal Heart Mesh Anklet", weightInGrams: 4.1, description: "Mesh-link anklet centered on a crystal-paved open heart.", category: "Bracelets", subcategory: "Anklets", image: "/images/Bracelets/35.jpeg" },
+  // b36 (flower bangle + ring combo, 8.4g combined) intentionally omitted, pending confirmation
+  { id: "b37", name: "Two-Tone Beaded Bracelet", weightInGrams: 9.1, description: "Textured two-tone bead bracelet, approx. 7\u20138\".", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/37.jpeg" },
+  { id: "b38", name: "Triple-Strand Silver Bead Bracelet", weightInGrams: 15.2, description: "Three-row brushed silver-tone bead bracelet.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/38.jpeg" },
+  { id: "b39", name: "Rope Chain Bracelet (8\")", weightInGrams: 7.3, description: "Classic twisted rope-link bracelet, 8\" length.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/39.jpeg" },
+  { id: "b40", name: "Rope Chain Bracelet (7.5\")", weightInGrams: 7.1, description: "Classic twisted rope-link bracelet, 7.5\" length.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/40.jpeg" },
+
+  // ─── EARRINGS / STUDS ────────────────────────────────────────────
+  { id: "e1", name: "Woven Textured Hoop Earrings", weightInGrams: 19.48, description: "Bold woven-texture hoop earrings with a ridged inner border", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e1.jpeg" },
+  { id: "e2", name: "Sculpted Teardrop Hoop Earrings", weightInGrams: 5.83, description: "Smooth sculptural teardrop hoops, 40mm", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e2.jpeg" },
+  { id: "e3", name: "Mismatched Dome & Hoop Earrings", weightInGrams: 13.32, description: "Intentionally mismatched pair — one sculptural open hoop, one chunky triangular dome", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e3.jpeg" },
+  { id: "e4", name: "Scalloped Ridge Hoop Earrings", weightInGrams: 8.02, description: "Chunky hoop earrings with a scalloped, ridged texture", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e4.jpeg" },
+  { id: "e5", name: "Spiked Ridge Hoop Earrings", weightInGrams: 7.58, description: "Bold hoop earrings with a spiked ridged texture, 40mm", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e5.jpeg" },
+  { id: "e6", name: "Twisted Wave Hoop Earrings", weightInGrams: 11.92, description: "Sculptural twisted wave hoop earrings with a fluid silhouette", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e6.jpeg" },
+  { id: "e7", name: "Puffed Woven Hoop Earrings", weightInGrams: 9.02, description: "Puffed teardrop hoops with a woven textured overlay", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e7.jpeg" },
+  { id: "e8", name: "Twisted Heart Drop Earrings", weightInGrams: 5.2, description: "Sculptural open heart drop earrings with a twisted silhouette", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e8.jpeg" },
+  { id: "e9", name: "Petite Twisted Heart Studs", weightInGrams: 2.55, description: "Delicate open heart stud earrings with a twisted wire silhouette", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e9.jpeg" },
+  { id: "e10", name: "Beaded Cluster Hoop Earrings", weightInGrams: 7.4, description: "Graduated beaded ball cluster hoop earrings", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e10.jpeg" },
+  { id: "e11", name: "Triangle Cutout Rectangle Drop Earrings", weightInGrams: 6.85, description: "Architectural rectangular drop earrings with open triangle cutouts", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e11.jpeg" },
+  { id: "e12", name: "Interlocking CC Drop Earrings", weightInGrams: 5.2, description: "Bold interlocking double-C drop earrings", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e12.jpeg" },
+  { id: "e13", name: "Textured Two-Tone Huggie Studs", weightInGrams: 2.35, description: "Petite huggie studs with a mixed gold and silver-tone textured finish", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e13.jpeg" },
+  { id: "e14", name: "Petite Twisted Heart Studs (Small)", weightInGrams: 3.85, description: "Delicate open heart stud earrings with a twisted wire silhouette", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e14.jpeg" },
+  { id: "e15", name: "Textured Heart Dome Studs", weightInGrams: 1.9, description: "Small domed heart stud earrings with a textured woven finish", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e15.jpeg" },
+  { id: "e16", name: "Rectangular Link Drop Studs", weightInGrams: 2.1, description: "Petite rectangular link drop stud earrings", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e16.jpeg" },
+  { id: "e17", name: "Open Heart Wire Studs", weightInGrams: 3.8, description: "Delicate open heart stud earrings with a smooth twisted wire silhouette", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e17.jpeg" },
+  { id: "e18", name: "Diamond-Cut Hoop Earrings", weightInGrams: 1.5, description: "Thin diamond-cut textured hoop earrings, shown in two sizes", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e18.jpeg" },
+  { id: "e19", name: "Paperclip Link Ball Stud Earrings", weightInGrams: 2.9, description: "Petite paperclip-link stud earrings accented with a polished ball", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e19.jpeg" },
+  { id: "e20", name: "Classic Polished Hoop Earrings", weightInGrams: 2.5, description: "Timeless high-polish hoop earrings, shown in multiple sizes", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e20.jpeg" },
+
+  { id: "e21", name: "Twisted Rope Hoop Earrings (Petite)", weightInGrams: 1.4, description: "Slim twisted rope-texture hoops, shown in two sizes", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e21.jpeg" },
+  { id: "e22", name: "Woven-Border Marquise Drop Earrings", weightInGrams: 10.6, description: "Sculptural marquise drop earrings with a ridged woven-texture border", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e22.jpeg" },
+  { id: "e23", name: "Star Stud Marquise Drop Earrings", weightInGrams: 12.7, description: "Star-topped marquise drop earrings with a textured ridged border", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e23.jpeg" },
+  { id: "e24", name: "Woven Ball Drop Earrings (Two-Tone)", weightInGrams: 10.4, description: "Elongated drop earrings finished with a two-tone textured ball", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e24.jpeg" },
+  { id: "e25", name: "Textured Oval Button Studs", weightInGrams: 7.3, description: "Wire-brushed textured oval button stud earrings", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e25.jpeg" },
+  { id: "e26", name: "Greek Key Hourglass Studs", weightInGrams: 7.8, description: "Hourglass-shaped stud earrings with an openwork Greek key motif", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e26.jpeg" },
+  { id: "e27", name: "Floral Heart Studs", weightInGrams: 5.2, description: "Domed heart stud earrings with an engraved floral motif", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e27.jpeg" },
+  { id: "e28", name: "Twisted Rope Hoop Earrings (Bold)", weightInGrams: 18.4, description: "Bold chunky hoop earrings with a twisted rope-and-chain texture", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e28.jpeg" },
+  { id: "e29", name: "Floral Cross Drop Earrings", weightInGrams: 12.6, description: "Statement floral cross drop earrings with a teardrop bail", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e29.jpeg" },
+  { id: "e30", name: "Twisted Greek Key Hoop Earrings", weightInGrams: 14.4, description: "Chunky twisted hoop earrings with an engraved Greek key overlay", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e30.jpeg" },
+  { id: "e31", name: "Double Flower Drop Earrings", weightInGrams: 13.1, description: "Layered double-flower drop earrings with a teardrop bail", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e31.jpeg" },
+  { id: "e32", name: "Woven Wing Hoop Earrings", weightInGrams: 12.6, description: "Sculptural wing-shaped hoop earrings with a woven textured overlay", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e32.jpeg" },
+  { id: "e33", name: "Beaded Teardrop Stud Earrings", weightInGrams: 15.2, description: "Beaded teardrop stud earrings — weight includes a matching pendant (sold as 3-piece set)", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e33.jpeg" },
+  { id: "e34", name: "Two-Tone Door-Knocker Hoop Earrings", weightInGrams: 31.7, description: "Bold door-knocker earrings with a two-tone textured rope hoop", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e34.jpeg" },
+  { id: "e35", name: "Greek Key Link Drop Earrings", weightInGrams: 28.2, description: "Interlocking Greek key link drop earrings — weight includes a matching pendant (sold as 3-piece set)", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e35.jpeg" },
+  { id: "e36", name: "Triangular Woven Studs", weightInGrams: 5.5, description: "Triangular stud earrings with a woven basketweave texture", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e36.jpeg" },
+  { id: "e37", name: "Beaded-Edge Oval Studs", weightInGrams: 9.8, description: "Beaded-edge oval button studs — weight includes a matching pendant (sold as 3-piece set)", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e37.jpeg" },
+  { id: "e38", name: "Textured Leaf Studs", weightInGrams: 5.2, description: "Leaf-shaped stud earrings with an engraved vein texture", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e38.jpeg" },
+  { id: "e39", name: "Ribbed Triangle Dome Earrings", weightInGrams: 15.8, description: "Ribbed triangular dome earrings with a center bead accent — weight includes a matching pendant (sold as 3-piece set)", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e39.jpeg" },
+  { id: "e40", name: "Double Circle Drop Hoop Earrings", weightInGrams: 15.7, description: "Interlocking double-circle drop hoop earrings with a textured lower ring", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e40.jpeg" },
+
+  { id: "e41", name: "Fan Shell Drop Earrings", weightInGrams: 24.2, description: "Statement fan/shell-shaped drop earrings with a fluted ridged texture", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e41.jpeg" },
+  { id: "e42", name: "Door-Knocker Hoop Earrings (Petite)", weightInGrams: 11.6, description: "Interlocking double-circle door-knocker hoop earrings", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e42.jpeg" },
+  { id: "e43", name: "Rectangular Hoop Earrings", weightInGrams: 4.8, description: "Slim polished rectangular hoop earrings", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e43.jpeg" },
+  { id: "e44", name: "Open Teardrop Drop Earrings", weightInGrams: 13.1, description: "Sculptural open teardrop drop earrings — weight includes a matching pendant (sold as 3-piece set)", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e44.jpeg" },
+  { id: "e45", name: "Crystal-Center Floral Button Studs", weightInGrams: 12.9, description: "Textured floral button studs with a crystal center accent", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e45.jpeg" },
+  { id: "e46", name: "Twisted Hoop Earrings", weightInGrams: 5.6, description: "Smooth twisted rope-texture hoop earrings", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e46.jpeg" },
+  { id: "e47", name: "Twisted Wave Hoop Earrings (White Tone)", weightInGrams: 7.2, description: "Sculptural twisted wave hoop earrings, rhodium/white-tone finish", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e47.jpeg" },
+  { id: "e48", name: "Woven Textured Marquise Hoops (White Tone)", weightInGrams: 10.6, description: "Marquise-shaped hoop earrings with a ridged woven border, rhodium/white-tone finish", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e48.jpeg" },
+  { id: "e49", name: "Spiked Ridge Hoop Earrings (White Tone)", weightInGrams: 8.5, description: "Bold hoop earrings with a spiked ridged texture, rhodium/white-tone finish", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e49.jpeg" },
+  { id: "e50", name: "Crystal-Accent Rectangular Hoops", weightInGrams: 8.6, description: "Rectangular tube hoop earrings with a single crystal accent, white-tone finish", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e50.jpeg" },
+  { id: "e51", name: "Crystal-Accent Oval Hoops", weightInGrams: 9.0, description: "Oval tube hoop earrings with a single crystal accent, white-tone finish", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e51.jpeg" },
+  { id: "e52", name: "Round Tube Hoop Earrings (Slim)", weightInGrams: 6.1, description: "Classic slim round tube hoop earrings, white-tone finish", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e52.jpeg" },
+  { id: "e53", name: "Round Tube Hoop Earrings (Wide)", weightInGrams: 10.0, description: "Classic wide round tube hoop earrings, white-tone finish", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e53.jpeg" },
+  { id: "e54", name: "Ridged Wave Hoop Earrings", weightInGrams: 20.2, description: "Bold hoop earrings with a textured ridged wave pattern, white-tone finish", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e54.jpeg" },
+  { id: "e55", name: "Sculptural Teardrop Hoop Earrings (White Tone)", weightInGrams: 13.1, description: "Smooth sculptural teardrop hoop earrings, white-tone finish", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e55.jpeg" },
+  // e56 (Ornate S-Scroll Pendant, 20.0g) reclassified — pendant only, no earring post/hook. Move to Necklaces/Pendants.
+  { id: "e57", name: "Triple Clover Chain Drop Earrings", weightInGrams: 5.5, description: "Layered triple-clover drop earrings on fine chain", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e57.jpeg" },
+  { id: "e58", name: "Petite Clover Stud Earrings", weightInGrams: 1.7, description: "Textured clover stud earrings", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e58.jpeg" },
+  // e59 (Textured Clover Charm, 2.6g) reclassified — pendant only, no earring post/hook. Move to Necklaces/Pendants.
+  { id: "e60", name: "Twist Knot Stud Earrings (Tri-Tone)", weightInGrams: 5.4, description: "Tri-tone twisted knot stud earrings (2.7g per earring, confirmed pair weight); matching pendant sold separately at 1.6g", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e60.jpeg" },
+
+  { id: "e61", name: "Twist Knot Stud Earrings (Mesh & Tri-Tone)", weightInGrams: 2.9, description: "Tri-tone woven-mesh twisted knot stud earrings — weight as photographed for a single earring; matching pendant sold separately at 1.8g", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e61.jpeg" },
+  { id: "e62", name: "Twist Knot Stud Earrings (Ribbed Mesh)", weightInGrams: 3.3, description: "Ribbed mesh-texture twisted knot stud earrings — weight as photographed for a single earring; matching pendant sold separately at 1.9g", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e62.jpeg" },
+  { id: "e64", name: "Twist Knot Stud Earrings (Woven)", weightInGrams: 3.0, description: "Woven-texture twisted knot stud earrings — weight as photographed for a single earring; matching pendant sold separately at 1.6g", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e64.jpeg" },
+  { id: "e65", name: "Round Screw-Top Stud Earrings", weightInGrams: 1.9, description: "Petite round stud earrings with an engraved screw-head motif", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e65.jpeg" },
+  { id: "e66", name: "Paperclip Ball Stud Earrings (Petite)", weightInGrams: 1.7, description: "Small paperclip-link stud earrings accented with a polished ball", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e66.jpeg" },
+  // e63 ("KING" charm pendants, ~1g each) reclassified — pendant only, no earring post/hook. Move to Necklaces/Pendants.
+  // e67–e74: wholesale display trays of ~150+ tiny stud-pair designs (hearts, clovers, stars, animals, etc.)
+  //   — no individual weights shown, so no per-item SKUs can be created yet. Needs supplier weigh-in
+  //   per design, or a single flat "assorted petite studs" listing if all pieces are near-identical weight.
+  { id: "e75", name: "Medallion Coin-Head Earrings", weightInGrams: 5.4, description: "Round medallion drop earrings with an enameled coin-head motif and Greek key border — weight includes a matching ring", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e75.jpeg" },
+
+  { id: "e76", name: "Cross Huggie Earrings", weightInGrams: 1.1, description: "Textured huggie hoop with a cross accent — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e76.jpeg" },
+  { id: "e77", name: "Wave-Texture Huggie Earrings", weightInGrams: 2.2, description: "Sculptural wave-textured huggie hoop — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e77.jpeg" },
+  { id: "e78", name: "Round Textured Huggie Earrings", weightInGrams: 2.0, description: "Small round textured huggie hoop — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e78.jpeg" },
+  { id: "e79", name: "Enamel Twist Ring Earrings", weightInGrams: 1.9, description: "Twisted ring-style earring with black enamel accent — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e79.jpeg" },
+  { id: "e80", name: "Leaf/Wing Huggie Earrings", weightInGrams: 2.1, description: "Textured leaf or wing-shaped huggie hoop — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e80.jpeg" },
+  { id: "e81", name: "Crystal Ball Huggie Earrings", weightInGrams: 1.1, description: "Small huggie hoop with a pavé crystal ball accent — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e81.jpeg" },
+  { id: "e82", name: "Ridged Wave Huggie Earrings", weightInGrams: 1.5, description: "Textured ridged huggie hoop with a dark enamel band — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e82.jpeg" },
+  { id: "e83", name: "Pavé Dome Huggie Earrings", weightInGrams: 1.6, description: "Small huggie hoop with a domed pavé-crystal accent — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e83.jpeg" },
+  { id: "e84", name: "Feathered Texture Huggie Earrings", weightInGrams: 1.3, description: "Ridged feather-textured huggie hoop — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e84.jpeg" },
+  { id: "e85", name: "Enamel Tiger-Stripe Huggie Earrings", weightInGrams: 1.6, description: "Huggie hoop with a dark enamel wave/stripe pattern — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e85.jpeg" },
+  { id: "e86", name: "Clover Accent Huggie Earrings", weightInGrams: 1.3, description: "Small huggie hoop with a clover-shaped enamel accent — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e86.jpeg" },
+  { id: "e87", name: "Cross Accent Huggie Earrings", weightInGrams: 1.4, description: "Textured huggie hoop with a cross and enamel band accent — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e87.jpeg" },
+  { id: "e88", name: "Diamond-Cut Leaf Huggie Earrings", weightInGrams: 1.4, description: "Diamond-cut faceted leaf/wing-shaped huggie hoop — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e88.jpeg" },
+];

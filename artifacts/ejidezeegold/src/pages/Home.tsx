@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
-import { products, gramsToAED } from '@/data/products';
-import { useCart } from '@/context/CartContext';
+import { products } from '@/data/products';
+import { useCart, gramsToAED } from '@/context/CartContext';
 import { ArrowRight } from 'lucide-react';
 
 export default function Home() {
-  const { formatPrice } = useCart();
+  const { formatPrice, goldPricePerGramAED } = useCart();
   const featured = products.slice(0, 3);
 
   return (
@@ -105,7 +105,7 @@ export default function Home() {
                   <div className="text-center">
                     <p className="text-white/50 text-xs uppercase tracking-widest mb-2">{product.category}</p>
                     <h3 className="text-xl font-serif text-white mb-2">{product.name}</h3>
-                    <p className="text-primary tracking-wider">{formatPrice(gramsToAED(product.weightInGrams))}</p>
+                    <p className="text-primary tracking-wider">{formatPrice(gramsToAED(product.weightInGrams ?? 0, goldPricePerGramAED))}</p>
                   </div>
                 </motion.div>
               ))}
