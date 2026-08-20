@@ -7,7 +7,17 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Home() {
   const { formatPrice, goldPricePerGramAED } = useCart();
-  const featured = products.slice(0, 3);
+  
+  // Specifically find the first Set, then fill the remaining 2 slots with other unique categories
+  const firstSet = products.find((p) => p.category === 'Sets');
+  const otherFeatured = products.reduce((acc, product) => {
+    if (acc.length < 2 && product.category !== 'Sets' && !acc.find((p) => p.category === product.category)) {
+      acc.push(product);
+    }
+    return acc;
+  }, [] as typeof products);
+  
+  const featured = firstSet ? [firstSet, ...otherFeatured] : otherFeatured;
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
@@ -15,10 +25,10 @@ export default function Home() {
       <section className="relative h-[100dvh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-  src="https://images.unsplash.com/photo-1777286492764-456e3530e34c?auto=format&fit=crop&q=80&w=2000"
-  alt="Gold jewelry background"
-  className="w-full h-full object-cover opacity-30"
-/>
+            src="https://images.unsplash.com/photo-1777286492764-456e3530e34c?auto=format&fit=crop&q=80&w=2000"
+            alt="Gold jewelry background"
+            className="w-full h-full object-cover opacity-30"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent" />
         </div>
 
@@ -105,7 +115,11 @@ export default function Home() {
                   <div className="text-center">
                     <p className="text-white/50 text-xs uppercase tracking-widest mb-2">{product.category}</p>
                     <h3 className="text-xl font-serif text-white mb-2">{product.name}</h3>
-                    <p className="text-primary tracking-wider">{formatPrice(gramsToAED(product.weightInGrams ?? 0, goldPricePerGramAED))}</p>
+                    <p className="text-primary tracking-wider">
+                      {product.priceOnRequest 
+                        ? "Price on Request" 
+                        : formatPrice(gramsToAED(product.weightInGrams ?? 0, goldPricePerGramAED))}
+                    </p>
                   </div>
                 </motion.div>
               ))}

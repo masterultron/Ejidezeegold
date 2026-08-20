@@ -63,32 +63,18 @@ export const products: Product[] = [
   { id: "n33", name: "Saint Jude Statue Pendant (Tri-Tone)", weightInGrams: 69.0, description: "Statement statue pendant of Saint Jude in tri-tone gold with silver-tone accents.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/33.jpeg" },
   { id: "n34", name: "Saint Jude Statue Pendant (Emerald-Set)", weightInGrams: 180.0, description: "Statement statue pendant of Saint Jude with emerald-tone crystal-paved detailing.", category: "Necklaces", subcategory: "Necklace and Pendants", image: "/images/Necklace/34.jpeg" },
 
-  // NOTE: pendant-only items pulled from the earrings photo batch (no post/hook — bail only).
-  // Route into Necklaces/Pendants once you confirm the reclassification:
-  //   e56 — Ornate S-Scroll Pendant, 20.0g, beaded texture
-  //   e59 — Textured Clover Charm Pendant, 2.6g
-  //   e63 — Crowned "KING" Charm Pendant, ~1g each (sold individually / pair — confirm)
-
   // ─── RINGS ──────────────────────────────────────────────────────
-  // NOTE: Rings has no CATEGORY_TREE dropdown, so subcategory is omitted throughout.
-
   { id: "r1", name: "Beaded Ball Stack Ring", weightInGrams: 1.7, description: "Open adjustable band with three graduated textured gold beads.", category: "Rings", image: "/images/Rings/1.jpeg" },
   { id: "r2", name: "Watch-Link Chain Ring", weightInGrams: 1.4, description: "Interlocking rectangular watch-link style band.", category: "Rings", image: "/images/Rings/2.jpeg" },
-  // r3 (bulk pile of plain polished bands, file 3.jpeg) omitted — weight given as a 1.5-1.7g range across
-  // ~20 pieces, not per-unit. Needs individual weigh-in or a single flat "assorted bands" listing.
   { id: "r4", name: "Triple Heart Stack Ring", weightInGrams: 1.37, description: "Open adjustable band set with three textured heart motifs.", category: "Rings", image: "/images/Rings/4.jpeg" },
   { id: "r5", name: "Cutout Geometric Signet Ring", weightInGrams: 3.5, description: "Polished open-cutout rectangular signet.", category: "Rings", image: "/images/Rings/5.jpeg" },
   { id: "r6", name: "Bar Accent Signet Ring", weightInGrams: 3.0, description: "Rectangular signet with a raised bar/dumbbell motif.", category: "Rings", image: "/images/Rings/6.jpeg" },
   { id: "r7", name: "Striped Onyx-Top Signet Ring", weightInGrams: 4.7, description: "Round signet with a black-striped inlay top.", category: "Rings", image: "/images/Rings/7.jpeg" },
   { id: "r8", name: "Greek Key Enamel Signet Ring", weightInGrams: 6.0, description: "Rectangular signet with a black enamel Greek key motif.", category: "Rings", image: "/images/Rings/8.jpeg" },
-  // (huggie-style hinged hoop, file 9.jpeg, 1.4g) omitted — appears misfiled from Earrings batch (matches e76-e88 huggie style), not a ring.
   { id: "r9", name: "Square CZ Statement Ring & Eternity Band Set", weightInGrams: 18.0, description: "Large square-cut CZ statement ring paired with a matching pavé eternity band, sold as a 2-piece set.", category: "Rings", image: "/images/Rings/10.jpeg" },
   { id: "r10", name: "Square CZ Ring & Textured Band Set", weightInGrams: 12.8, description: "Large square-cut CZ ring paired with a diamond-cut textured wide band, sold as a 2-piece set.", category: "Rings", image: "/images/Rings/11.jpeg" },
   { id: "r11", name: "Emerald-Cut Halo Ring & Double Band Set", weightInGrams: 18.5, description: "Emerald-cut halo statement ring paired with two matching pavé eternity bands, sold as a 3-piece set.", category: "Rings", image: "/images/Rings/13.jpeg" },
   { id: "r12", name: "Square CZ Ring & Wide Textured Band Set", weightInGrams: 14.2, description: "Square-cut CZ ring paired with a wide diamond-cut textured band, sold as a 2-piece set.", category: "Rings", image: "/images/Rings/14.jpeg" },
-  // (7-ring sculptural cocktail collection, file 15.jpeg; 9-ring white-gold CZ collection, file 16.jpeg;
-  // ~15-ring engagement-style CZ collection, file 17.jpeg) omitted — display/lifestyle shots with no
-  // individual weights. Needs per-design weigh-in before these can become SKUs.
   { id: "r13", name: "Beaded Cluster Ring (White-Tone)", weightInGrams: 8.2, description: "Wide open cuff-style ring with dense beaded, textured rows in a rhodium finish.", category: "Rings", image: "/images/Rings/18.jpeg" },
   { id: "r14", name: "Beaded Cluster Ring (Gold-Tone)", weightInGrams: 8.2, description: "Wide open cuff-style ring with dense beaded, textured rows in a gold finish.", category: "Rings", image: "/images/Rings/19.jpeg" },
   { id: "r15", name: "Beaded Cluster Ring (Compact, Gold-Tone)", weightInGrams: 6.7, description: "Smaller open cuff-style ring with dense beaded, textured rows in a gold finish.", category: "Rings", image: "/images/Rings/20.jpeg" },
@@ -149,10 +135,8 @@ export const products: Product[] = [
   { id: "b30", name: "Wrap Bangle Collection", description: "A selection of wrap-style bangles in gold and white gold finishes. Message us to confirm weight and pricing.", category: "Bracelets", subcategory: "Bangles", image: "/images/Bracelets/30.jpeg", priceOnRequest: true },
   { id: "b31", name: "Heart Charm Mesh Anklet", weightInGrams: 4.0, description: "Mesh-link anklet centered on a crystal-set open heart.", category: "Bracelets", subcategory: "Anklets", image: "/images/Bracelets/31.jpeg" },
   { id: "b32", name: "Infinity Mesh Anklet", weightInGrams: 4.3, description: "Mesh-link anklet featuring a polished infinity symbol charm.", category: "Bracelets", subcategory: "Anklets", image: "/images/Bracelets/32.jpeg" },
-  // b33 reclassified — see n10 above (V Monogram Pendant Necklace)
   { id: "b34", name: "Crystal Infinity Mesh Anklet", weightInGrams: 4.3, description: "Mesh-link anklet with a crystal-paved infinity symbol charm.", category: "Bracelets", subcategory: "Anklets", image: "/images/Bracelets/34.jpeg" },
   { id: "b35", name: "Crystal Heart Mesh Anklet", weightInGrams: 4.1, description: "Mesh-link anklet centered on a crystal-paved open heart.", category: "Bracelets", subcategory: "Anklets", image: "/images/Bracelets/35.jpeg" },
-  // b36 (flower bangle + ring combo, 8.4g combined) intentionally omitted, pending confirmation
   { id: "b37", name: "Two-Tone Beaded Bracelet", weightInGrams: 9.1, description: "Textured two-tone bead bracelet, approx. 7\u20138\".", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/37.jpeg" },
   { id: "b38", name: "Triple-Strand Silver Bead Bracelet", weightInGrams: 15.2, description: "Three-row brushed silver-tone bead bracelet.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/38.jpeg" },
   { id: "b39", name: "Rope Chain Bracelet (8\")", weightInGrams: 7.3, description: "Classic twisted rope-link bracelet, 8\" length.", category: "Bracelets", subcategory: "Bracelets", image: "/images/Bracelets/39.jpeg" },
@@ -215,20 +199,14 @@ export const products: Product[] = [
   { id: "e53", name: "Round Tube Hoop Earrings (Wide)", weightInGrams: 10.0, description: "Classic wide round tube hoop earrings, white-tone finish", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e53.jpeg" },
   { id: "e54", name: "Ridged Wave Hoop Earrings", weightInGrams: 20.2, description: "Bold hoop earrings with a textured ridged wave pattern, white-tone finish", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e54.jpeg" },
   { id: "e55", name: "Sculptural Teardrop Hoop Earrings (White Tone)", weightInGrams: 13.1, description: "Smooth sculptural teardrop hoop earrings, white-tone finish", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e55.jpeg" },
-  // e56 (Ornate S-Scroll Pendant, 20.0g) reclassified — pendant only, no earring post/hook. Move to Necklaces/Pendants.
   { id: "e57", name: "Triple Clover Chain Drop Earrings", weightInGrams: 5.5, description: "Layered triple-clover drop earrings on fine chain", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e57.jpeg" },
   { id: "e58", name: "Petite Clover Stud Earrings", weightInGrams: 1.7, description: "Textured clover stud earrings", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e58.jpeg" },
-  // e59 (Textured Clover Charm, 2.6g) reclassified — pendant only, no earring post/hook. Move to Necklaces/Pendants.
   { id: "e60", name: "Twist Knot Stud Earrings (Tri-Tone)", weightInGrams: 5.4, description: "Tri-tone twisted knot stud earrings (2.7g per earring, confirmed pair weight); matching pendant sold separately at 1.6g", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e60.jpeg" },
   { id: "e61", name: "Twist Knot Stud Earrings (Mesh & Tri-Tone)", weightInGrams: 2.9, description: "Tri-tone woven-mesh twisted knot stud earrings — weight as photographed for a single earring; matching pendant sold separately at 1.8g", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e61.jpeg" },
   { id: "e62", name: "Twist Knot Stud Earrings (Ribbed Mesh)", weightInGrams: 3.3, description: "Ribbed mesh-texture twisted knot stud earrings — weight as photographed for a single earring; matching pendant sold separately at 1.9g", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e62.jpeg" },
   { id: "e64", name: "Twist Knot Stud Earrings (Woven)", weightInGrams: 3.0, description: "Woven-texture twisted knot stud earrings — weight as photographed for a single earring; matching pendant sold separately at 1.6g", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e64.jpeg" },
   { id: "e65", name: "Round Screw-Top Stud Earrings", weightInGrams: 1.9, description: "Petite round stud earrings with an engraved screw-head motif", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e65.jpeg" },
   { id: "e66", name: "Paperclip Ball Stud Earrings (Petite)", weightInGrams: 1.7, description: "Small paperclip-link stud earrings accented with a polished ball", category: "Earrings", subcategory: "Studs", image: "/images/Earrings/e66.jpeg" },
-  // e63 ("KING" charm pendants, ~1g each) reclassified — pendant only, no earring post/hook. Move to Necklaces/Pendants.
-  // e67–e74: wholesale display trays of ~150+ tiny stud-pair designs (hearts, clovers, stars, animals, etc.)
-  //   — no individual weights shown, so no per-item SKUs can be created yet. Needs supplier weigh-in
-  //   per design, or a single flat "assorted petite studs" listing if all pieces are near-identical weight.
   { id: "e75", name: "Medallion Coin-Head Earrings", weightInGrams: 5.4, description: "Round medallion drop earrings with an enameled coin-head motif and Greek key border — weight includes a matching ring", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e75.jpeg" },
   { id: "e76", name: "Cross Huggie Earrings", weightInGrams: 1.1, description: "Textured huggie hoop with a cross accent — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e76.jpeg" },
   { id: "e77", name: "Wave-Texture Huggie Earrings", weightInGrams: 2.2, description: "Sculptural wave-textured huggie hoop — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e77.jpeg" },
@@ -244,6 +222,21 @@ export const products: Product[] = [
   { id: "e87", name: "Cross Accent Huggie Earrings", weightInGrams: 1.4, description: "Textured huggie hoop with a cross and enamel band accent — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e87.jpeg" },
   { id: "e88", name: "Diamond-Cut Leaf Huggie Earrings", weightInGrams: 1.4, description: "Diamond-cut faceted leaf/wing-shaped huggie hoop — weight as photographed for a single piece", category: "Earrings", subcategory: "Earrings", image: "/images/Earrings/e88.jpeg" },
 
+  // ─── SETS ────────────────────────────────────────────────────────
+  { id: "s1", name: "Tri-Tone Swirl Set", weightInGrams: 42.70, description: "Tri-tone (gold, rose, white) abstract swirling pendant necklace on a woven chain with matching earrings.", category: "Sets", image: "/images/Sets/1.jpeg" },
+  { id: "s2", name: "Textured Seashell Set", weightInGrams: 45.60, description: "Gold textured, layered seashell or leaf motif necklace with matching earrings.", category: "Sets", image: "/images/Sets/2.jpeg" },
+  { id: "s3", name: "Patterned Tie-Drop Collar Set", weightInGrams: 82.70, description: "Substantial gold collar necklace featuring circle and textured motifs with a tie-drop center and matching dangle earrings.", category: "Sets", image: "/images/Sets/3.jpeg" },
+  { id: "s4", name: "Floral Medallion Set", weightInGrams: 59.00, description: "Gold necklace featuring a large textured round medallion with beaded borders and tri-tone floral accents, with matching earrings.", category: "Sets", image: "/images/Sets/4.jpeg" },
+  { id: "s5", name: "Filigree Floral Collar Set", weightInGrams: 57.30, description: "Elaborate wide gold filigree collar necklace accented with contrasting blue and gold flower motifs, with matching earrings.", category: "Sets", image: "/images/Sets/5.jpeg" },
+  { id: "s6", name: "Textured Flower Set", weightInGrams: 35.50, description: "Gold woven chain necklace with a large textured flower pendant and matching floral earrings.", category: "Sets", image: "/images/Sets/6.jpeg" },
+  { id: "s7", name: "V-Monogram Station Set", weightInGrams: 7.40, description: "Fine gold chain necklace featuring open \"V\" monogram stations, with a matching ring and stud earrings.", category: "Sets", image: "/images/Sets/7.jpeg" },
+  { id: "s8", name: "Oval Link Drop Set", weightInGrams: 6.30, description: "Fine gold chain necklace with dangling polished oval links and crystal accents, with matching stud earrings.", category: "Sets", image: "/images/Sets/8.jpeg" },
+  { id: "s9", name: "Pavé Oval Link Drop Set", weightInGrams: 6.70, description: "Fine gold chain necklace with dangling crystal-pavé oval links, with matching earrings.", category: "Sets", image: "/images/Sets/9.jpeg" },
+  { id: "s10", name: "Sculpted Floral Mesh Set", weightInGrams: 30.83, description: "Thick woven gold chain with a sculpted, ruffled floral pendant featuring a textured/crystal center, with matching earrings.", category: "Sets", image: "/images/Sets/10.jpeg" },
+  { id: "s11", name: "Wide Ribbed Screw-Motif Set", weightInGrams: 62.10, description: "Substantial 4-piece set including a gold collar necklace, bracelet, ring, and hoop earrings featuring a ribbed texture with polished screw-head motifs.", category: "Sets", image: "/images/Sets/21.jpeg" },
+  { id: "s12", name: "Slim Ribbed Screw-Motif Set", weightInGrams: 50.90, description: "Slimmer 4-piece set including a gold collar necklace, bracelet, ring, and hoop earrings featuring a ribbed texture with polished screw-head motifs.", category: "Sets", image: "/images/Sets/22.jpeg" },
+  { id: "s13", name: "Sculpted Fan Motif Set", weightInGrams: 7.80, description: "Fine gold wire chain necklace featuring a sculptural, layered fan or leaf motif pendant, paired with matching stud earrings.", category: "Sets", image: "/images/Sets/23.jpeg" },
+
   // ─── WATCHES ──────────────────────────────────────────────────
   { id: "w1", name: "Fluted Sunburst Day-Date Watch", weightInGrams: 71.2, description: "Gold-tone watch with a sunburst dial, diamond-style hour markers, day-date window, fluted bezel, and jubilee bracelet.", category: "Watches", image: "/images/Watches/1.jpeg" },
   { id: "w2", name: "Pavé Crystal Dial Watch", weightInGrams: 72.9, description: "Gold-tone watch with a fully crystal-paved dial, fluted bezel, and jubilee bracelet.", category: "Watches", image: "/images/Watches/2.jpeg" },
@@ -254,8 +247,6 @@ export const products: Product[] = [
   { id: "w7", name: "Two-Tone Diamond Marker Watch", weightInGrams: 71.1, description: "Two-tone watch with a gold sunburst dial, diamond-style markers, fluted bezel, and two-tone jubilee bracelet.", category: "Watches", image: "/images/Watches/7.jpeg" },
   { id: "w8", name: "Chronograph Sport Watch", weightInGrams: 140.1, description: "Gold-tone chronograph with three sub-dials, tachymeter bezel, and oyster-style link bracelet.", category: "Watches", image: "/images/Watches/8.jpeg" },
   { id: "w9", name: "Two-Tone Blue Dial Watch", weightInGrams: 70.9, description: "Two-tone watch with a pale blue sunburst dial, diamond-style markers, cabochon date accent, fluted bezel, and two-tone jubilee bracelet.", category: "Watches", image: "/images/Watches/9.jpeg" },
-  // w10: scale reading (447.3g) exceeds the Tanita KP-400M's 400g max capacity — physically impossible, likely a
-  // misread or the item was weighed with something else on the scale. Flagged as priceOnRequest until re-weighed.
   { id: "w10", name: "Mother-of-Pearl Roman Dial Watch", description: "Gold-tone watch with a white mother-of-pearl dial, Roman numeral markers, fluted bezel, and woven mesh-style bracelet. Message us to confirm weight and pricing.", category: "Watches", image: "/images/Watches/10.jpeg", priceOnRequest: true },
   { id: "w11", name: "Two-Tone Diamond Marker Watch (II)", weightInGrams: 70.8, description: "Two-tone watch with a gold sunburst dial, diamond-style markers, fluted bezel, and two-tone jubilee bracelet.", category: "Watches", image: "/images/Watches/11.jpeg" },
   { id: "w12", name: "Rose Two-Tone Diamond Watch", weightInGrams: 43.4, description: "Gold and rose-gold two-tone watch, sunburst dial with diamond-style markers, fluted bezel, and rose-accented jubilee bracelet.", category: "Watches", image: "/images/Watches/12.jpeg" },
